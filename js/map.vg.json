@@ -10,14 +10,14 @@
         "url": "https://raw.githubusercontent.com/bwee0001/FIT3179Week9Homework/main/js/australiamap_ne_50m.topojson",
         "format": {"type": "topojson", "feature": "ne_50m_admin_0_countries"}
     },
-    "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    "mark": {"type": "geoshape", "fill": "lightgrey", "stroke": "white"}
     },
     {
         "data": {
-            "url": "https://raw.githubusercontent.com/bwee0001/FIT3179Week9Homework/main/js/australiamap_ne_50m.topojson",
-            "format": {"type": "topojson", "feature": "ne_50m_graticules_10"}
+            "url": "https://raw.githubusercontent.com/bwee0001/FIT3179Week9Homework/main/js/mapWithStatelines.topojson",
+            "format": {"type": "topojson", "feature": "ne_50m_admin_1_states_provinces"}
         },
-        "mark": {"type": "geoshape", "fill": null, "stroke": "gray"}
+        "mark": {"type": "geoshape", "fill": null, "stroke": "white"}
     },
     {
     "data": {
@@ -25,41 +25,14 @@
     },
     "transform": [
         {"filter": "datum.country == 'Australia'"},
-        {"calculate": "'' + datum.commod1 + '' + datum.commod2 + '' + datum.commod3", "as": "allMinerals"}
+        {"calculate": "'' + datum.commod1 + ' ' + datum.commod2 + ' ' + datum.commod3", "as": "allMinerals"},
+        {"calculate": "datum.commod2 + ' ' + datum.commod3", "as": "additionalMinerals"}
     ],
     "params":[
         {
             "name": "development_highlight",
             "select": {"type": "point", "fields": ["dev_stat"]},
             "bind": "legend"
-        },
-        {
-            "name": "state_highlight",
-            "select": {"type": "point", "fields": ["state"]},
-            "bind": {
-                "input": "select",
-                "options": [
-                    null,
-                    "Queensland",
-                    "Northern Territory*",
-                    "Western Australia",
-                    "Tasmania",
-                    "New South Wales",
-                    "South Australia",
-                    "Territory of Christmas Island"
-                ],
-                "labels": [
-                    "Show All",
-                    "Queensland",
-                    "Northern Territory*",
-                    "Western Australia",
-                    "Tasmania",
-                    "New South Wales",
-                    "South Australia",
-                    "Territory of Christmas Island"
-                ],
-                "name": "State Selection: "
-            }
         }
     ],
     "mark": {"type": "circle", "tooltip": {"content": "data"}},
@@ -69,13 +42,21 @@
         "color": {
             "field": "dev_stat",
             "type": "nominal",
-            "title": "Development Status",
+            "title": "Current Development Status",
             "scale": {"scheme": "category10"}
         },
         "opacity": {
             "condition": {"param": "development_highlight", "value": 0.9},
             "value": 0.1
-        } 
+        },
+        "tooltip": [
+            {"field": "site_name", "type": "nominal", "title":"Mine Name"},
+            {"field": "latitude", "type": "nominal", "title":"Latitude"},
+            {"field": "longitude", "type": "nominal", "title":"Longitude"},
+            {"field": "commod1", "type": "nominal", "title":"Main Mineral Present"},
+            {"field": "additionalMinerals", "type": "nominal", "title":"Additional Minerals Present"},
+            {"field": "dev_stat", "type": "nominal", "title":"Development Status"}
+        ] 
     }
     }
 ]
