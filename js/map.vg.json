@@ -1,12 +1,12 @@
 {
 "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-"width": 1000,
+"width": 900,
 "height": 700,
 "title": {
     "text":"Mineral Ore Mines In Australia as of 2022",
     "fontSize": 24
 },
-"projection": {"type": "equirectangular"},
+"projection": {"type": "conicConformal","rotate":[-5,15,90]},
 "layer": [
     {
     "data": {
