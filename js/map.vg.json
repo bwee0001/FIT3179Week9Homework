@@ -14,7 +14,7 @@
     },
     {
     "data": {
-        "url": "https://raw.githubusercontent.com/bwee0001/FIT3179Week9Homework/main/data/Mineral%20Ores%20Around%20The%20World%20Cleaned.csv"
+        "url": "https://raw.githubusercontent.com/bwee0001/FIT3179Week9Homework/main/data/Mineral%20Ores%20Australia.csv"
     },
     "transform": [
         {"filter": "datum.country == 'Australia'"},
