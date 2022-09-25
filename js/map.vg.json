@@ -6,7 +6,7 @@
     "text":"Mineral Ore Mines In Australia as of 2022",
     "fontSize": 24
 },
-"projection": {"type": "conicConformal","rotate":[-5,15,90]},
+"projection": {"type": "conicEqualArea","rotate":[-10,30,40]},
 "layer": [
     {
     "data": {
